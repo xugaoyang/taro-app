@@ -3,11 +3,11 @@ import { Form, Cell, Input, Button, DatePicker } from '@nutui/nutui-react-taro'
 import { ArrowRight } from '@nutui/icons-react-taro'
 import dayjs from 'dayjs'
 import Taro from '@tarojs/taro'
-import useTodoStore from '@/store/useTodoStore'
+import { useTodoStore } from '@/store'
 
 
 export default function Todo() {
-    const {addTodo} = useTodoStore()
+    const { addTodo } = useTodoStore()
     const initialValues = {
         createdAt: new Date(),
         text: ''

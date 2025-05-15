@@ -2,7 +2,7 @@ import { View, Text } from '@tarojs/components'
 import { Cell, Button, Checkbox, Tabs } from '@nutui/nutui-react-taro'
 import { useState, useMemo } from 'react'
 import './index.scss'
-import useTodoStore from '@/store/useTodoStore'
+import { useTodoStore } from '@/store'
 
 export default function Todo() {
     const { todos, toggleTodo, deleteTodo } = useTodoStore()
@@ -55,7 +55,7 @@ export default function Todo() {
                                     <Button
                                         type='danger'
                                         size='small'
-                                        onClick={() => todoStore.deleteTodo(todo.id)}
+                                        onClick={() => deleteTodo(todo.id)}
                                     >
                                         删除
                                     </Button>
