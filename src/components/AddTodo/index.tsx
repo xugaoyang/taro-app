@@ -4,9 +4,10 @@ import { ArrowRight } from '@nutui/icons-react-taro'
 import dayjs from 'dayjs'
 import Taro from '@tarojs/taro'
 import { useTodoStore } from '@/store'
+import './index.scss'
 
 
-export default function Todo() {
+export default function AddTodo() {
     const { addTodo } = useTodoStore()
     const initialValues = {
         createdAt: new Date(),

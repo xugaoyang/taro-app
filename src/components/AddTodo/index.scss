@@ -1,0 +1,14 @@
+.add-todo-container {
+    padding: 10px;
+    .handle-btns {
+        display: flex;
+        width: 100%;
+        .nut-button {
+            flex: 1 1 auto;
+            margin-right: 10px;
+        }
+    }
+    .nut-form-item .nut-form-item-labeltxt {
+        font-weight: bold;
+    }
+}

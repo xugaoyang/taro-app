@@ -4,13 +4,13 @@ import { useState, useMemo } from 'react'
 import './index.scss'
 import { useTodoStore } from '@/store'
 
-export default function Todo() {
+export default function TodoList() {
     const { todos, toggleTodo, deleteTodo } = useTodoStore()
     const [tabvalue, setTabvalue] = useState<string | number>('0')
     const activeTodos = useMemo(() => { return todos.filter(todo => !todo.completed) }, [todos])
     const completedTodos = useMemo(() => { return todos.filter(todo => todo.completed) }, [todos])
     return (
-        <View className='todo-container'>
+        <View className='todo-list-container'>
             <Tabs
                 value={tabvalue}
                 onChange={(value) => {
