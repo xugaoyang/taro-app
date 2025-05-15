@@ -1,0 +1,43 @@
+.todo-container {
+    padding: 20px;
+
+    .todo-input {
+        display: flex;
+        margin-bottom: 20px;
+
+        .input {
+            flex-shrink: 0;
+            min-width: 40px;
+            margin-right: 10px;
+        }
+    }
+
+    .todo-list {
+        .todo-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+
+            .todo-text {
+                flex: 1;
+                margin: 0 10px;
+                min-width: 0;
+                /* 解决内容溢出问题 */
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                &.completed {
+                    text-decoration: line-through;
+                    color: #999;
+                }
+            }
+
+            .todo-delete-btn {
+                margin-left: auto;
+                flex-shrink: 0;
+            }
+        }
+    }
+}

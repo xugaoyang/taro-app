@@ -1,4 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: '首页',
+  navigationBarTitleText: '添加任务',
   usingComponents: {},
 })
