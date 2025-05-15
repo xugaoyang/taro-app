@@ -1,12 +1,13 @@
 import { View } from '@tarojs/components'
 import { Form, Cell, Input, Button, DatePicker } from '@nutui/nutui-react-taro'
-import { todoStore } from '../../store/todo'
 import { ArrowRight } from '@nutui/icons-react-taro'
 import dayjs from 'dayjs'
 import Taro from '@tarojs/taro'
+import useTodoStore from '@/store/useTodoStore'
 
 
 export default function Todo() {
+    const {addTodo} = useTodoStore()
     const initialValues = {
         createdAt: new Date(),
         text: ''
@@ -16,7 +17,11 @@ export default function Todo() {
     }
     const addTodoFinish = (form) => {
         if (form.text && form.createdAt) {
-            todoStore.addTodo(form)
+            addTodo({
+                id: Date.now().toString(),
+                completed: false,
+                ...form
+            })
             Taro.navigateTo({ url: 'pages/todo/index' })
         }
     }

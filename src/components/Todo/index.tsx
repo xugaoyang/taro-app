@@ -1,20 +1,14 @@
 import { View, Text } from '@tarojs/components'
 import { Cell, Button, Checkbox, Tabs } from '@nutui/nutui-react-taro'
-import { TodoItem } from '@/types/todo'
-import { todoStore } from '@/store/todo'
 import { useState, useMemo } from 'react'
 import './index.scss'
-
+import useTodoStore from '@/store/useTodoStore'
 
 export default function Todo() {
+    const { todos, toggleTodo, deleteTodo } = useTodoStore()
     const [tabvalue, setTabvalue] = useState<string | number>('0')
-    const [todos, setTodos] = useState<TodoItem[]>(todoStore.getTodos())
-    const activeTodos = useMemo(() => {
-        return todos.filter(todo => !todo.completed)
-    }, [todos])
-    const completedTodos = useMemo(() => {
-        return todos.filter(todo => todo.completed)
-    }, [todos])
+    const activeTodos = useMemo(() => { return todos.filter(todo => !todo.completed) }, [todos])
+    const completedTodos = useMemo(() => { return todos.filter(todo => todo.completed) }, [todos])
     return (
         <View className='todo-container'>
             <Tabs
@@ -31,7 +25,7 @@ export default function Todo() {
 
                                     <Checkbox
                                         checked={todo.completed}
-                                        onChange={() => todoStore.toggleTodo(todo.id)}
+                                        onChange={() => toggleTodo(todo.id)}
                                     />
                                     <Text className={`todo-text ${todo.completed ? 'completed' : ''}`}>
                                         {todo.text}
@@ -41,7 +35,7 @@ export default function Todo() {
                                         className="todo-delete-btn"
                                         type='danger'
                                         size='small'
-                                        onClick={() => todoStore.deleteTodo(todo.id)}
+                                        onClick={() => deleteTodo(todo.id)}
                                     >
                                         删除
                                     </Button>
